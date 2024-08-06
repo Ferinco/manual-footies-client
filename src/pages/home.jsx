@@ -1,4 +1,5 @@
 import {
+  ArrivalsSection,
   HeroSection,
   ProductsSection,
   ServicesSection,
@@ -10,6 +11,7 @@ export default function Home() {
       <HeroSection />
       <ServicesSection />
       <ProductsSection />
+      <ArrivalsSection/>
     </div>
   );
 }
