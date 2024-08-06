@@ -1,5 +1,5 @@
-import { Button } from "../custom/button";
-import { SubHeader } from "../custom/Headers";
+import { Button } from "../../custom/button";
+import { SubHeader } from "../../custom/Headers";
 import ProductCard from "./productCard";
 
 export default function Products() {

@@ -1,4 +1,4 @@
-import { SubHeader } from "../custom/Headers";
+import { SubHeader } from "../../custom/Headers";
 import { LongCard, ShortCard } from "./service-card";
 
 export default function Services() {
@@ -20,7 +20,7 @@ export default function Services() {
     },
   ];
   return (
-      <div className="flex gap-5 h-fit relative">
+      <div className="flex lg:flex-row flex-col gap-5 h-fit relative">
         <LongCard />
         <ShortCard />
       </div>

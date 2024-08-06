@@ -4,8 +4,8 @@ import RightSide from "./right";
 export default function Background() {
   return (
     <div className="">
-      <div className="flex justify-center items-center">
-        <h1 className="text-center max-w-3xl leading-[0.9] text-9xl">
+      <div className="flex flex-col md:flex-row justify-center items-center">
+        <h1 className="text-center lg:max-w-3xl leading-[0.9] lg:text-9xl text-7xl md:text-8xl">
           Bato makes what fits your feet
         </h1>
       </div>

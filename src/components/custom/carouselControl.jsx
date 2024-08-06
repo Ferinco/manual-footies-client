@@ -1,6 +1,6 @@
 export default function CarouselControl() {
   return (
-    <div className="flex flex-col items-end justify-end text-end">
+    <div className="hidden md:flex flex-col items-end justify-end text-end">
       <p className="text-7xl font-thin text-gray-400">02</p>
       <div className="flex gap-3 items-center">
         <span className="text-xs font-medium">PREV</span>

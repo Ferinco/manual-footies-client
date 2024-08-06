@@ -1,4 +1,4 @@
-import { SubHeader } from "../custom/Headers";
+import { SubHeader } from "../../custom/Headers";
 
 export default function NewArrival() {
   const arrivals = [

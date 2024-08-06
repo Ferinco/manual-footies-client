@@ -9,7 +9,7 @@ export default function Navbar() {
       <div className="logo-div">
         <h1 className="text-3xl">bato</h1>
       </div>
-      <div className="flex gap-4 ml-16">
+      <div className="md:flex gap-4 ml-16 hidden">
         {NavLinks.map((link, index) => (
           <a key={index} className="text-xs font-semibold">{link.name}</a>
         ))}
