@@ -5,7 +5,7 @@ import CarouselControl from "../custom/carouselControl";
 
 export default function RightSide() {
   return (
-    <div className="w-1/4 flex flex-col justify-between items-end absolute top-0 right-0 h-full gap-64">
+    <div className="w-1/4 flex flex-col items-end absolute top-0 right-0 gap-44 h-full center">
 <div className="flex flex-col gap-16 mt-24">
 {
     Socials.map((social)=>(
