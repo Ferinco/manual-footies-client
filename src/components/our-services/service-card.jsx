@@ -17,7 +17,7 @@ export const LongCard = () => {
         //   }
       ];
   return (
-    <div className="flex justify-between h-full rounded-2xl border-2 border-red-500 w-3/4 p-6">
+    <div className="flex justify-between h-full rounded-2xl border-2 border-red-500 w-3/4 p-9">
       <h1 className="w-1/2 text-6xl">Look good, feel great, perform better</h1>
       <div className="flex flex-col justify-between">
         {

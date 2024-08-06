@@ -20,11 +20,9 @@ export default function Services() {
     },
   ];
   return (
-    <div className="px-7">
       <div className="flex gap-5 h-fit relative">
         <LongCard />
         <ShortCard />
       </div>
-    </div>
   );
 }

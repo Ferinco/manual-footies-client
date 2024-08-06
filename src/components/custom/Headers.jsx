@@ -1,7 +1,6 @@
 export const SubHeader =(props)=>{
     return(
-        <div className="justify-center items-center text-center">
-            <h2 className="font-medium text-3xl">{props.title}</h2>
-        </div>
+
+            <h2 className={`text-6xl w-1/2 uppercase font-bold ${props.style}`}>{props.title}</h2>
     )
 }
