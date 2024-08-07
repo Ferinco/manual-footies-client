@@ -39,23 +39,23 @@ export default function Products() {
   ];
   const items = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
   return (
-    <div className="mt-20 flex flex-col gap-10">
-      <div className="flex justify-between">
+    <div className="mt-20 flex flex-col gap-10 w-full overflow-hidden">
+      <div className="flex flex-col lg:flex-row justify-between">
         <SubHeader style="text-start" title="Always choose the best" />
-        <div className="lg:max-w-[300px]">
+        <div className="sm:max-w-[300px]">
           <p>
             lhiueuife ugteuge huyeourgeuy egroueoref ggeufeyuey bghjge egeoregr
           </p>
         </div>
       </div>
-      <div className="flex gap-3">
+      <div className="flex gap-3 overflow-x-auto">
         {
             tabs.map((tab, index)=>(
                <button className="rounded-3xl px-6 py-3 text-base uppercase font-semibold bg-transparent border-2 border-black" key={index}>{tab.name}</button>
             ))
         }
       </div>
-      <div className="products-body grid grid-cols-5 gap-4">
+      <div className="products-body grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {items.map((item, index) => (
           <ProductCard />
         ))}
