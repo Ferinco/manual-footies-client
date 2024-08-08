@@ -1,6 +1,6 @@
 export default function HeroOverlay() {
   return (
-    <div className="absolute hidden md:flex justify-center items-end w-full -mt-12">
+    <div className="absolute hidden md:flex justify-center items-end w-full -mt-12 ">
       <img
         src="/images/hero-main2.png"
         className="max-w-3xl -rotate-[25deg] -ml-20 mt-40"

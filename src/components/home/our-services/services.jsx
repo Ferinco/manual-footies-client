@@ -20,7 +20,7 @@ export default function Services() {
     },
   ];
   return (
-      <div className="flex lg:flex-row flex-col gap-5 h-fit relative">
+      <div className="flex lg:flex-row flex-col gap-5 h-fit relative mt-20 md:mt-[300px] lg:mt-[170px]">
         <LongCard />
         <ShortCard />
       </div>

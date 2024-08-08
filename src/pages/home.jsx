@@ -1,10 +1,12 @@
 import {
   ArrivalsSection,
+  DiscountSection,
   HeroSection,
   ProductsSection,
   ServicesSection,
   TestimonialsSection,
 } from "../components/exports";
+import Collections from "../components/home/collections/collections";
 
 export default function Home() {
   return (
@@ -13,6 +15,8 @@ export default function Home() {
       <ServicesSection />
       <ProductsSection />
       <ArrivalsSection/>
+      <DiscountSection/>
+      <Collections/>
       {/* <TestimonialsSection/> */}
     </div>
   );
