@@ -15,8 +15,9 @@ export default function Navbar() {
         ))}
       </div>
       <div className="flex gap-3 items-center">
-        <Button title="Log in" type="colored">
-        </Button>
+        {/* <Button title="Log in" type="colored"> */}
+          <a href="/login">login</a>
+        {/* </Button> */}
         <CartIcon/>
       </div>
     </div>
