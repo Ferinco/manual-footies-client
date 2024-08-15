@@ -2,13 +2,13 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 
 export default function ProductCard(props) {
   return (
-    <div className={`h-[350px] border ${props.style} flex-col`}>
+    <div className={`h-[350px] ${props.style} flex-col`}>
       <div className="image-div h-4/6 border rounded-2xl overflow-hidden relative">
         <img
           src={props.image}
           className="h-full w-full object-center object-cover absolute"
         />
-        <div className="w-full h-full absolute p-3 flex justify-end cursor-pointer">
+        <div className="w-full h-full absolute p-3 flex justify-end cursor-pointer bg-black/20">
           <div className="icon-div p-[4px] rounded-[50%] bg-white h-7 w-7 flex justify-center items-center cursor-pointer">
             <Icon
               icon="weui:like-outlined"

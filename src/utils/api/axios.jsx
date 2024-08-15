@@ -6,3 +6,6 @@ const mainApi = axios.create({
 export const fetchAllProducts = () =>{
    return mainApi.get(`/products`)
 }
+export const fetchAllCategories = () =>{
+    return mainApi.get(`/categories/4`)
+ }
