@@ -1,8 +1,8 @@
 import { useRoutes } from "react-router-dom";
 import ExternalLayout from "../layouts/external";
 import Home from "../pages/home";
-import { SignUp } from "../pages/signUp/signUp";
-
+import LoginPage from "../pages/auth/login";
+import RegisterPage from "../pages/auth/signUp";
 export default function Routes(){
     return useRoutes([
      {
@@ -13,10 +13,10 @@ export default function Routes(){
         ]
      }   ,
      {
-        path: "/login",
-        // element: </>,
         children: [
-            {path:"/login", element : <SignUp/>}
+            {path:"/login", element : <LoginPage/>},
+            {path:"/sign-up", element : <RegisterPage/>},
+
         ]
      }   
     ])

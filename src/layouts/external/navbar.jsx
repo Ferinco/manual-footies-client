@@ -11,14 +11,16 @@ export default function Navbar() {
       </div>
       <div className="md:flex gap-4 ml-16 hidden">
         {NavLinks.map((link, index) => (
-          <a key={index} className="text-xs font-semibold">{link.name}</a>
+          <a key={index} className="text-xs font-semibold">
+            {link.name}
+          </a>
         ))}
       </div>
       <div className="flex gap-3 items-center">
-        {/* <Button title="Log in" type="colored"> */}
-          <a href="/login">login</a>
-        {/* </Button> */}
-        <CartIcon/>
+        <a href="/login">
+          <Button title="Log in" type="colored"></Button>
+        </a>
+        <CartIcon />
       </div>
     </div>
   );
