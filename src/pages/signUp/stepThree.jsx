@@ -13,7 +13,7 @@ export default function StepThree({ setStep }) {
   console.log(chosenName, userEmail, password);
 
 
-  //form validation
+  //form validationhd
   const validatePassword = (password) => {
     return {
       length: /.{6,}/.test(password),
