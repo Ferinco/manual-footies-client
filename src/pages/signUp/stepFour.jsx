@@ -9,13 +9,15 @@ export default function StepFour({ setStep }) {
   const [otp, setOtp] = useState("");
   console.log(otp);
 
+
+  
   //verify otp sent to email
   const CheckOTP = async (e) => {
     e.preventDefault();
     try {
       const response = await mainApi.post(`/api/v1/auth/verify`, {
         email: userEmail,
-        otp: "435873",
+        otp: Number(otp),
       });
       console.log(response);
     } catch (error) {

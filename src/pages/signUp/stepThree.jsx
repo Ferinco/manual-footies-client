@@ -47,16 +47,16 @@ export default function StepThree({ setStep }) {
   
     if (confirmPassword === password) {
       try {
-    //  const response =  await dispatch(
-    //       registerUser({
-    //         email: userEmail,
-    //         username: chosenName,
-    //         password: password,
-    //       })
-    //     );
+     const response =  await dispatch(
+          registerUser({
+            email: userEmail,
+            username: chosenName,
+            password: password,
+          })
+        );
        
 
-    //     response.status === 201 ? setStep(4) : setStep(3)
+        response.status === 201 ? setStep(4) : setStep(3)
     setStep(4)
       } catch (error) {
         setError("Registration failed. Please try again.");
