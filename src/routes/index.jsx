@@ -18,6 +18,13 @@ export default function Routes(){
             {path:"/sign-up", element : <RegisterPage/>},
 
         ]
-     }   
+     }   ,
+     {
+        children: [
+            {path:"/", element : <LoginPage/>},
+            {path:"/sign-up", element : <RegisterPage/>},
+
+        ]
+     } 
     ])
 }
