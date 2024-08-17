@@ -2,7 +2,7 @@ import { useRoutes } from "react-router-dom";
 import ExternalLayout from "../layouts/external";
 import Home from "../pages/home";
 import LoginPage from "../pages/auth/login";
-import RegisterPage from "../pages/auth/signUp";
+import RegisterPage from "../pages/signUp/signUp";
 export default function Routes(){
     return useRoutes([
      {

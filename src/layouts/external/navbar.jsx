@@ -17,7 +17,7 @@ export default function Navbar() {
         ))}
       </div>
       <div className="flex gap-3 items-center">
-        <a href="/login">
+        <a href="/login" className="outline-none">
           <Button title="Log in" type="colored"></Button>
         </a>
         <CartIcon />

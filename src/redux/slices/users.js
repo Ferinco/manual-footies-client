@@ -12,7 +12,7 @@ export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async ({ email, username, password }, { rejectWithValue }) => {
     try {
-      const response = await mainApi.post(`/register`, {
+      const response = await mainApi.post(`/api/v1/auth/register`, {
         email,
         username,
         password,
@@ -21,7 +21,7 @@ export const registerUser = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);
-      console.log(error)
+      // console.log(error)
 
     }
   }
@@ -38,6 +38,7 @@ const userSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    //reducers for register user
     builder
       .addCase(registerUser.pending, (state) => {
         state.status = 'loading';
