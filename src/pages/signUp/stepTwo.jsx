@@ -20,6 +20,7 @@ export default function StepTwo({ setStep }) {
         holder="username"
         styles="h-[50px] p-3 bg-[#d1d1d1] text-black"
         onChange={(e) => setUsername(e.target.value)}
+        required={true}
       />
       <div className="flex justify-end">
         <FormButton
