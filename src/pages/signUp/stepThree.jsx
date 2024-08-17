@@ -11,6 +11,17 @@ export default function StepThree({ setStep }) {
   const dispatch = useDispatch();
   const { chosenName, userEmail } = UseAppContext();
   console.log(chosenName, userEmail, password);
+
+
+  //form validation
+  const validatePassword = (password) => {
+    return {
+      length: /.{6,}/.test(password),
+      uppercase: /[A-Z]/.test(password),
+      lowercase: /[a-z]/.test(password),
+      number: /[0-9]/.test(password),
+    };
+  };
   const RegisterUser = (e) => {
     e.preventDefault()
     // dispatch(registerUser({
