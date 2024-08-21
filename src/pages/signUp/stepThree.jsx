@@ -4,7 +4,7 @@ import { FormInput } from "../../components/custom/inputs";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../redux/slices/users";
 import { UseAppContext } from "../../contexts/context";
-import { mainApi } from "../../utils/api/axios";
+import toast from "react-hot-toast";
 
 export default function StepThree({ setStep }) {
   const [password, setPassword] = useState("");
@@ -12,7 +12,7 @@ export default function StepThree({ setStep }) {
   const [error, setError] = useState("");
 
   const dispatch = useDispatch();
-  const { chosenName, userEmail } = UseAppContext();
+  const { chosenName, userEmail, pass, setPass } = UseAppContext();
   const [validation, setValidation] = useState({
     length: false,
     uppercase: false,
@@ -30,7 +30,7 @@ export default function StepThree({ setStep }) {
     };
   };
 
-  // Function to check if all validation conditions are true
+  //if all validation conditions are true
   const allConditionsMet = (validation) => {
     return Object.values(validation).every((value) => value === true);
   };
@@ -40,32 +40,34 @@ export default function StepThree({ setStep }) {
     const checked = validatePassword(password);
     setValidation(checked);
   };
-  console.log(password);
+  console.log(password, pass);
 
   const RegisterUser = async (e) => {
     e.preventDefault();
-  
     if (confirmPassword === password) {
+      setPass(password);
       try {
-     const response =  await dispatch(
+        const response = await dispatch(
           registerUser({
             email: userEmail,
             username: chosenName,
             password: password,
           })
         );
-       
-
-        response.status === 201 ? setStep(4) : setStep(3)
-    setStep(4)
+        console.log(response)
+        if (response.payload.status === 201) {
+          setStep(4);
+        } else {
+          setStep(3);
+          toast.error("Sorry, user already exists.");
+        }
       } catch (error) {
-        setError("Registration failed. Please try again.");
+        toast.error("Registration failed. Please try again.");
       }
     } else {
       setError("*Passwords do not match.");
     }
   };
-  
 
   return (
     <form onSubmit={RegisterUser}>

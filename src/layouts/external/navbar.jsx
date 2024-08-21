@@ -2,6 +2,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { Button } from "../../components/custom/button";
 import { NavLinks } from "../../resusables/links";
 import CartIcon from "../../components/custom/cartIcon";
+import { PATH_AUTH } from "../../routes/path";
 
 export default function Navbar() {
   return (
@@ -17,7 +18,7 @@ export default function Navbar() {
         ))}
       </div>
       <div className="flex gap-3 items-center">
-        <a href="/login" className="outline-none">
+        <a href={PATH_AUTH.client} className="outline-none">
           <Button title="Log in" type="colored"></Button>
         </a>
         <CartIcon />

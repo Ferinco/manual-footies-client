@@ -5,7 +5,7 @@ import {
   ProductsSection,
   ServicesSection,
   TestimonialsSection,
-} from "../components/exports";
+} from "../exports";
 import Collections from "../components/home/collections/collections";
 
 export default function Home() {
