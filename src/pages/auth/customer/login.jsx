@@ -6,33 +6,37 @@ import { loginUser } from "../../../redux/slices/users";
 import { UseAppContext } from "../../../contexts/context";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import ButtonPreloader from "../../../components/custom/preloaders/buttonPreloader";
 
 export default function LoginPage() {
   const { userEmail, setUserEmail, pass, setPass } = UseAppContext();
   const state = useSelector((state) => state.user);
   const status = state.status;
+  const isAuthenticated = useSelector((state) => state.user);
   console.log(status);
   const navigate = useNavigate();
   console.log(userEmail, pass);
   const dispatch = useDispatch();
+
+  //login the user
   const TryLogin = async (e) => {
     e.preventDefault();
     try {
-      const reponse = await dispatch(
+      const response = await dispatch(
         loginUser({
           email: userEmail,
           password: pass,
         })
       );
-
-      if (status === "succeeded") {
+      if (response.type === "auth/loginUser/fulfilled") {
         toast.success("logged in successfully");
         navigate("/customer");
       } else {
         toast.error("could not log you in, please try again");
       }
-      console.log(reponse);
+      console.log(response.type);
     } catch (error) {
+      toast.error("could not log you in, please try again");
       console.log(error);
     }
   };
@@ -56,6 +60,7 @@ export default function LoginPage() {
                 holder="password"
                 styles="h-[50px] p-3 bg-[#d1d1d1] text-black"
                 onChange={(e) => setPass(e.target.value)}
+                type="password"
               />
             </div>
             <div className="flex justify-end items-end">
@@ -63,7 +68,10 @@ export default function LoginPage() {
                 forgot password?
               </p>
             </div>
-            <FormButton title="Log in" styles="bg-black text-white mt-5" />
+            <FormButton
+              title={status === "loading" ? <ButtonPreloader /> : "Sign in"}
+              styles="bg-black text-white mt-5"
+            />
             <p className="text-sm font-medium text-center">
               Dont't have an account?{" "}
               <a className=" text-blue-600" href="/sign-up">
