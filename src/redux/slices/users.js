@@ -1,15 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { mainApi } from "../../utils/api/axios";
-import { loginAuth } from "../../services/authServices";
+import {loginAuth} from "../../services/authServices"
 const initialState = {
   isAuthenticated: false,
   user: null,
   role: null,
   status: "idle",
   error: null,
-};a
+};
 
-//thunk for user registration
+// Thunk for user registration
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async ({ email, username, password }, { rejectWithValue }) => {
@@ -19,29 +19,31 @@ export const registerUser = createAsyncThunk(
         username,
         password,
       });
-      console.log(response);
-      return response.data;
+      return response;
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);
-      // console.log(error)
     }
   }
 );
 
+// Thunk for user login
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async ({ email, password }, { rejectWithValue }) => {
     try {
       const response = await loginAuth(email, password);
-      console.log(response);
-      return response.data;
-    } catch (error) {
+      return response; 
+    }
+    
+    catch (error) {
       return rejectWithValue(error.response?.data || error.message);
     }
   }
 );
+
+
 const userSlice = createSlice({
-  name: "auth",
+  name: "user",
   initialState,
   reducers: {
     logout: (state) => {
@@ -49,40 +51,43 @@ const userSlice = createSlice({
       state.user = null;
       state.role = null;
     },
+ 
   },
   extraReducers: (builder) => {
-    //reducers for register user
-    builder
-      .addCase(registerUser.pending, (state) => {
+    
+    builder.addCase(registerUser.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(registerUser.fulfilled, (state, action) => {
+      builder.addCase(registerUser.fulfilled, (state, action) => {
         state.isAuthenticated = true;
         state.user = action.payload.user;
         state.role = action.payload.role;
         state.status = "succeeded";
         state.error = null;
       })
-      .addCase(registerUser.rejected, (state, action) => {
+      builder.addCase(registerUser.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
-      });
-    builder
-      .addCase(loginUser.pending, (state) => {
+      })
+
+      //builders for user login
+      builder.addCase(loginUser.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(loginUser.fulfilled, (state, action) => {
+      builder.addCase(loginUser.fulfilled, (state, action) => {
         state.isAuthenticated = true;
         state.user = action.payload.user;
-        state.role = action.payload.role;
+        state.role = action.payload.user.role;
         state.status = "succeeded";
         state.error = null;
       })
-      .addCase(loginUser.rejected, (state, action) => {
+      builder.addCase(loginUser.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
       });
   },
 });
+
+// Export actions and reducer
 export const { logout } = userSlice.actions;
 export default userSlice.reducer;

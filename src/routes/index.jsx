@@ -1,30 +1,52 @@
 import { useRoutes } from "react-router-dom";
 import ExternalLayout from "../layouts/external";
 import Home from "../pages/home";
-import LoginPage from "../pages/auth/login";
-import RegisterPage from "../pages/signUp/signUp";
-export default function Routes(){
-    return useRoutes([
-     {
-        path: "/",
-        element: <ExternalLayout/>,
-        children: [
-            {path:"/", element : <Home/>}
-        ]
-     }   ,
-     {
-        children: [
-            {path:"/login", element : <LoginPage/>},
-            {path:"/sign-up", element : <RegisterPage/>},
-
-        ]
-     }   ,
-     {
-        children: [
-            {path:"/", element : <LoginPage/>},
-            {path:"/sign-up", element : <RegisterPage/>},
-
-        ]
-     } 
-    ])
+import CustomerDashboardLayout from "../layouts/dashboards/customers";
+import CustomerDashboard from "../pages/customers/dashboard";
+import AuthGuard from "../guards/authGuard";
+import { AdminLayout, AdminLogin, ClientLogin, SignUp } from "../exports";
+import RoleBasedGuard from "../guards/roleBasedGuard";
+import AdminDashboardLayout from "../layouts/dashboards/admin";
+import AdminDashboard from "../pages/Admin/dashboard";
+import GuestGuard from "../guards/guestGuard";
+export default function Routes() {
+  return useRoutes([
+    {
+      path: "/",
+      element: <ExternalLayout />,
+      children: [{ path: "/", element: <Home /> }],
+    },
+    { path: "/auth",
+      element: <GuestGuard/>,
+      children: [
+        { path: "login", element: <ClientLogin /> },
+        { path: "admin/login", element: <AdminLogin /> },
+      ],
+    },
+    { path: "/sign-up",
+      element: <SignUp/>,
+    },
+    {
+      path: "/customer",
+      element: (
+        <AuthGuard>
+          <RoleBasedGuard accessibleRoles={"user"}>
+          <CustomerDashboardLayout />
+          </RoleBasedGuard>
+        </AuthGuard>
+      ),
+      children: [{ path: "", element: <CustomerDashboard /> }],
+    },
+    {
+      path: "/admin",
+      element: (
+        <AuthGuard>
+          <RoleBasedGuard accessibleRoles={"admin"}>
+          <AdminLayout/>
+          </RoleBasedGuard>
+        </AuthGuard>
+      ),
+      children: [{ path: "", element: <AdminDashboard /> }],
+    },
+  ]);
 }
