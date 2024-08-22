@@ -55,9 +55,9 @@ h1 {
   background: linear-gradient(to right, transparent 12%, pink 88%);
  
 }
-.active-bar{
+/* .active-bar{
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-}
+} */
 .admin-sidebar{
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }

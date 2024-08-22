@@ -4,10 +4,10 @@ import DashboardNavbar from "./navbar";
 
 export default function AdminDashboardLayout() {
   return (
-    <div className="flex bg-[#f1f1f1]">
+    <div className="flex flex-row bg-white relative">
       <Sidebar />
-      <div className="w-[calc(100vw-250px)] flex flex-col">
-        <DashboardNavbar/>
+      <div className="w-full lg:w-[calc(100vw-250px)] flex flex-col h-screen lg:ml-[250px]">
+        <DashboardNavbar />
         <Outlet />
       </div>
     </div>

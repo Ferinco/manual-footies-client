@@ -5,7 +5,7 @@ export default function ProfileTile(props) {
         <div className="border border-red-400 rounded-full w-full h-full absolute">
 
         </div>
-        <div className="absolute h-5 w-5 bg-green-600 rounded-full border-4 border-[#f1f1f1] right-0 bottom-0 -mb-1 mr-1"></div>
+        <div className="absolute h-5 w-5 bg-green-600 rounded-full border-4 border-[#f1f1f1] right-0 bottom-0 -mb-1"></div>
       </div>
       <div className="flex flex-col leading-4">
         <h6>{props.username}</h6>

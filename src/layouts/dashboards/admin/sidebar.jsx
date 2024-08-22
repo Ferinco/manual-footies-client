@@ -7,7 +7,7 @@ export default function Sidebar() {
   const { activeBar, setActiveBar } = UseAppContext();
 
   return (
-    <div className="h-screen w-[250px] p-2 flex flex-col justify-between admin-sidebar">
+    <div className="h-screen w-[250px] p-2 hidden lg:flex flex-col justify-between admin-sidebar bg-[#fafafa] fixed">
       <div>
         <div className="flex p-1 h-16 rounded-xl border border-red-400"></div>
         <div className="sidebar-contents mt-5">
@@ -16,7 +16,7 @@ export default function Sidebar() {
               <div
                 className={`flex flex-col gap-4 capitalize p-3 rounded-xl text-base ${
                   link.id === activeBar
-                    ? "bg-white/75 text-black active-bar font-semibold"
+                    ? "bg-[#f1f1f1] text-black active-bar font-semibold"
                     : "bg-transparent text-black/75 font-medium"
                 }`}
                 key={index}
