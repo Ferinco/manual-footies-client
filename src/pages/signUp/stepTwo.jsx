@@ -17,7 +17,7 @@ export default function StepTwo({ setStep }) {
   return (
     <form onSubmit={onSave}>
       <FormInput
-        holder="username"
+        label="username"
         styles="h-[50px] p-3 bg-[#d1d1d1] text-black"
         onChange={(e) => setUsername(e.target.value)}
         required={true}
@@ -25,7 +25,7 @@ export default function StepTwo({ setStep }) {
       <div className="flex justify-end">
         <FormButton
           title="Next"
-          styles="bg-black text-white mt-5 max-w-[100px] py-3"
+          styles=" text-white mt-5"
         />
       </div>
     </form>

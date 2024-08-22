@@ -5,7 +5,9 @@ import { useEffect } from "react";
 
 export default function RoleBasedGuard({ accessibleRoles, children }) {
   const role = useSelector((state) => state.user.role);
+  console.log(role)
   const { pathname } = useLocation();
+  console.log(pathname)
   const navigate = useNavigate();
 
   useEffect(() => {

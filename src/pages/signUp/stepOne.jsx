@@ -38,7 +38,7 @@ export default function StepOne({ setStep }) {
   return (
     <form onSubmit={onSave}>
       <FormInput
-        holder="you@example.com"
+        label="email"
         styles="h-[50px] p-3 bg-[#d1d1d1] text-black"
         onChange={
           ((e) => {setEmail(e.target.value); setError("")})
