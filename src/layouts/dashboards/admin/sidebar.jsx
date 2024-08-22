@@ -1,6 +1,7 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { AdminLinks } from "../../dashboardlinks";
 import { UseAppContext } from "../../../contexts/context";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   const { activeBar, setActiveBar } = UseAppContext();
@@ -20,8 +21,8 @@ export default function Sidebar() {
                 }`}
                 key={index}
               >
-                <a
-                  href={link.link}
+                <Link
+                  to={link.link}
                   className="flex gap-3 items-center"
                   onClick={() => setActiveBar(link.id)}
                 >
@@ -33,7 +34,7 @@ export default function Sidebar() {
                     //   style={{ color: "black" }}
                   />
                   {link.title}{" "}
-                </a>
+                </Link>
               </div>
             ))}
           </div>

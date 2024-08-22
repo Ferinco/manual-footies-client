@@ -1,3 +1,5 @@
+import { PATH_DASHBOARD } from "../routes/path";
+
 export const AdminLinks = [
     {
         title: "dashboard",
@@ -8,7 +10,7 @@ export const AdminLinks = [
     {
         title: "stores",
         icon: "carbon:store",
-        link:"" ,
+        link: PATH_DASHBOARD.admin.stores,
         id: 2
     }, {
         title: "orders",

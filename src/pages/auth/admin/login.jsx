@@ -24,6 +24,7 @@ export default function LoginPage() {
           password: pass,
         })
       );
+      console.log(response)
       if (response.type === "auth/loginUser/fulfilled") {
         toast.success("logged in successfully");
         navigate("/admin");

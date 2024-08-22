@@ -4,7 +4,7 @@ export default function AdminDashboard() {
   console.log(user);
   return (
     <div className="text-black">
-      <h1>Admin dashboard</h1>
+      
     </div>
   );
 }

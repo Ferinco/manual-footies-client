@@ -6,7 +6,7 @@ export default function AdminDashboardLayout() {
   return (
     <div className="flex bg-[#f1f1f1]">
       <Sidebar />
-      <div className="w-[calc(100vw-250px)] border border-red-600 flex flex-col">
+      <div className="w-[calc(100vw-250px)] flex flex-col">
         <DashboardNavbar/>
         <Outlet />
       </div>

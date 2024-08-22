@@ -4,7 +4,7 @@ import Home from "../pages/home";
 import CustomerDashboardLayout from "../layouts/dashboards/customers";
 import CustomerDashboard from "../pages/customers/dashboard";
 import AuthGuard from "../guards/authGuard";
-import { AdminLayout, AdminLogin, ClientLogin, SignUp } from "../exports";
+import { AdminLayout, AdminLogin, AdminStores, ClientLogin, SignUp } from "../exports";
 import RoleBasedGuard from "../guards/roleBasedGuard";
 import AdminDashboardLayout from "../layouts/dashboards/admin";
 import AdminDashboard from "../pages/Admin/dashboard";
@@ -47,6 +47,7 @@ export default function Routes() {
         </AuthGuard>
       ),
       children: [{ path: "", element: <AdminDashboard /> }],
+      children: [{ path: "stores", element: <AdminStores /> }],
     },
   ]);
 }
