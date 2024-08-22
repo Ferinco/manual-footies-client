@@ -74,6 +74,19 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+//thunk for user logout
+// export const logoutUser = createAsyncThunk(
+//   "auth/logoutUser",
+//   async (_, { rejectWithValue }) => {
+//     try {
+//       localStorage.removeItem("token");
+//       localStorage.removeItem("user");
+//       return;
+//     } catch (error) {
+//       return rejectWithValue(error.response?.data || error.message);
+//     }
+//   }
+// );
 const userSlice = createSlice({
   name: "user",
   initialState,
@@ -82,6 +95,8 @@ const userSlice = createSlice({
       state.isAuthenticated = false;
       state.user = null;
       state.role = null;
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
     },
   },
   extraReducers: (builder) => {

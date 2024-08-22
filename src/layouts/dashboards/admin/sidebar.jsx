@@ -2,9 +2,20 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { AdminLinks } from "../../dashboardlinks";
 import { UseAppContext } from "../../../contexts/context";
 import { Link } from "react-router-dom";
+import { logout } from "../../../redux/slices/users";
+import { useDispatch } from "react-redux";
 
 export default function Sidebar() {
   const { activeBar, setActiveBar } = UseAppContext();
+  const dispatch = useDispatch();
+  const LogUserOut = async () => {
+    try {
+      const response = await dispatch(logout());
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="h-screen w-[250px] p-2 hidden lg:flex flex-col justify-between admin-sidebar bg-[#fafafa] fixed">
@@ -55,7 +66,7 @@ export default function Sidebar() {
           >
             {" "}
             <Icon
-            icon="carbon:settings" 
+              icon="carbon:settings"
               width="1.1em"
               height="1.1em"
               //   style={{ color: "black" }}
@@ -70,20 +81,21 @@ export default function Sidebar() {
               : "bg-transparent text-black/75"
           }`}
         >
-          <a
+          <Link
             // href={link.link}
             className="flex gap-3 items-center"
+            onClick={LogUserOut}
             //   onClick={() => setActiveBar(link.id)}
           >
             {" "}
             <Icon
-            icon="basil:logout-outline"
+              icon="basil:logout-outline"
               width="1.2em"
               height="1.2em"
               //   style={{ color: "black" }}
             />
             Log out{" "}
-          </a>
+          </Link>
         </div>
       </div>
     </div>
