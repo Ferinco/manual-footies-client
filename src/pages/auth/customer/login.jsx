@@ -42,7 +42,7 @@ export default function LoginPage() {
     }
   };
   return (
-    <div className="flex justify-between">
+    <div className="flex  justify-between">
       <div className="md:w-1/2 w-screen h-screen">
         <div className="max-w-[320px] m-auto flex flex-col justify-center h-full gap-16">
           <div className="flex flex-col gap-2">

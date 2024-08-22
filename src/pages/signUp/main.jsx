@@ -24,11 +24,11 @@ export default function SignUpSteps() {
   const renderTitle = () => {
     switch (step) {
       case 1:
-        return "Create an account with Us!";
+        return "Create Your Account.";
       case 2:
-        return "Create an account with Us!";
+        return "Oya, Username.";
       case 3:
-        return "Create an account with Us!";
+        return "One More Step To Go!";
       case 4:
         return "We sent you an OTP";
       default:
@@ -53,7 +53,7 @@ export default function SignUpSteps() {
   return (
     <div>
       <div className="flex flex-col gap-2">
-        <h2 className={`text-3xl font-bold leading-9 ${step === 4 ? "text-center" :  "text-start"}`}>
+        <h2 className={`text-5xl font-semibold ${step === 4 ? "text-center" :  "text-start"}`}>
           {renderTitle()}
         </h2>
         <p className={`${step === 4 ? "text-center" :  "text-start"}`}>{renderSubTitle()}</p>

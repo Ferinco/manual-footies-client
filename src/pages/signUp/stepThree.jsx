@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { FormButton } from "../../components/custom/button";
 import { FormInput } from "../../components/custom/inputs";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../redux/slices/users";
 import { UseAppContext } from "../../contexts/context";
 import toast from "react-hot-toast";
+import ButtonPreloader from "../../components/custom/preloaders/buttonPreloader";
 
 export default function StepThree({ setStep }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-
   const dispatch = useDispatch();
   const { chosenName, userEmail, pass, setPass } = UseAppContext();
   const [validation, setValidation] = useState({
@@ -19,6 +19,7 @@ export default function StepThree({ setStep }) {
     lowercase: false,
     number: false,
   });
+  const status = useSelector((state) => state.user.status);
 
   //password validationh
   const validatePassword = (password) => {
@@ -74,8 +75,8 @@ export default function StepThree({ setStep }) {
       <div className="flex flex-col gap-3">
         <div>
           <FormInput
-            holder="password"
-            styles="h-[50px] p-3 bg-[#d1d1d1] text-black"
+            label="password"
+            styles="p-3 text-black"
             onChange={handleChange}
             type="password"
             required={true}
@@ -83,8 +84,8 @@ export default function StepThree({ setStep }) {
         </div>
         <div>
           <FormInput
-            holder="confirm password"
-            styles="h-[50px] p-3 bg-[#d1d1d1] text-black"
+            label="confirm password"
+            styles="p-3 text-black"
             type="password"
             required={true}
             onChange={(e) => setConfirmPassword(e.target.value)}
@@ -114,8 +115,9 @@ export default function StepThree({ setStep }) {
 
       <div className="flex justify-end">
         <FormButton
-          title="Next"
-          styles="bg-black text-white mt-5 max-w-[100px] py-3"
+              title={status === "loading" ? <ButtonPreloader /> : "Sign in"}
+
+          styles="text-white mt-5 py-3 min-w-[100px]"
         />
       </div>
     </form>
