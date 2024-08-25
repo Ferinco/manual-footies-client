@@ -9,8 +9,8 @@ import { loginUser } from "../../redux/slices/users";
 import { useNavigate } from "react-router-dom";
 
 export default function StepFour({ setStep }) {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const state = useSelector((state) => state.user);
   const status = state.status;
   const { userEmail, pass } = UseAppContext();
@@ -38,6 +38,32 @@ export default function StepFour({ setStep }) {
     }
   };
 
+
+
+
+    
+    const handleChange = (e, index) => {
+      const value = e.target.value;
+      if (/^\d$/.test(value)) {
+        const newOtp = otp.split('');
+        newOtp[index] = value;
+        setOtp(newOtp.join(''));
+        if (index < 5 && value) {
+          document.getElementById(`otp-${index + 1}`).focus();
+        }
+      }
+    }
+  const handleKeyDown = (e, index) => {
+    if (e.key === 'Backspace' && otp[index] === '') {
+      const newOtp = otp.split('');
+      newOtp[index] = '';
+      setOtp(newOtp.join(''));
+      if (index > 0) {
+        document.getElementById(`otp-${index - 1}`).focus();
+      }
+    }
+  };
+
   //verify otp sent to email
   const CheckOTP = async (e) => {
     e.preventDefault();
@@ -46,23 +72,31 @@ export default function StepFour({ setStep }) {
         email: userEmail,
         otp: Number(otp),
       });
-      console.log(response)
+      console.log(response);
       response.status === 200 ? SignIn() : toast.error("OTP is incorrect");
       console.log(response);
     } catch (error) {
       console.log(error);
-      toast.error("OTP is incorrect")
+      toast.error("OTP is incorrect");
     }
   };
   return (
     <form onSubmit={CheckOTP}>
       <div>
-        <FormInput
-          holder="Enter OTP"
-          styles="h-[50px] p-3 bg-[#d1d1d1] text-black"
-          required={true}
-          onChange={(e) => setOtp(e.target.value)}
+      <div className="flex space-x-2">
+      {[...Array(6)].map((_, index) => (
+        <input
+          key={index}
+          type="text"
+          id={`otp-${index}`}
+          maxLength="1"
+          className="w-12 h-12 text-center border border-gray-300 rounded bg-transparent"
+          value={otp[index] || ''}
+          onChange={(e) => handleChange(e, index)}
+          onKeyDown={(e) => handleKeyDown(e, index)}
         />
+      ))}
+    </div>
         <div className="flex justify-center">
           <FormButton
             title="Next"

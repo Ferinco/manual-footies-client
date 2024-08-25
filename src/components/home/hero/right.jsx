@@ -5,17 +5,14 @@ import CarouselControl from "../../custom/carouselControl";
 
 export default function RightSide() {
   return (
-    <div className="hidden w-1/4 md:flex flex-col justify-end lg:justify-start items-end absolute top-0 right-0 gap-44 h-full center">
-<div className="lg:flex flex-col gap-16 mt-24 hidden">
-{
-    Socials.map((social)=>(
-        <p className="-rotate-90 text-xs font-medium">
-            {social.name}
-        </p> 
-    ))
-}
-</div>
-<CarouselControl/>
+    <div className="container md:w-1/3 xl:w-1/2 h-full bg-gradient-to-tl from-orange-500 via-15% via-white/25 to-cyan-500 overflow-hidden flex xl:justify-center items-center mt-7 md:mt-0">
+      {/* <div className="w-[800px] h-fit block flex-shrink-0 overflow-visible">
+        <img
+          src="/images/hero-main2.png"
+          className="-rotate-[25deg] object-cover object-center w-full h-full"
+        />
+      </div> */}
+      {/* <CarouselControl/> */}
     </div>
   );
 }

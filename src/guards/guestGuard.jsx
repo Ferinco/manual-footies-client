@@ -4,9 +4,9 @@ import { useSelector } from "react-redux";
 
 export default function GuestGuard() {
   const isAuthenticated = useSelector((state)=> state.user.isAuthenticated)
+  const role = useSelector((state)=> state.user.role)
   const [redirect] = useSearchParams();
   const redirectUrl = redirect.get("redirect");
-  console.log(redirectUrl);
   if (isAuthenticated) {
     if (redirectUrl) {
       return <Navigate to={redirectUrl} replace />;

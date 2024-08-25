@@ -13,6 +13,7 @@ export const PATH_DASHBOARD ={
     },
     admin: {
         index: ROOT_ADMIN,
+       stores: JOIN(ROOT_ADMIN, "stores" )
 
     }
 }

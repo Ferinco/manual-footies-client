@@ -1,18 +1,19 @@
-// import { useDispatch } from "react-redux";
-// import { register } from "../../redux/slices/users";
-// import { registerAuth } from "../../services/authServices";
-// export const registerTry = async (data) => {
-//     const dispatch = useDispatch();
-//   try {
-//     const response = await registerAuth(data);
-//     dispatch(
-//       register({
-//         user: data.user,
-//         role: "user",
-//       })
-//     );
-//     console.log(response)
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+// utils/session.js
+
+import { jwtDecode } from "jwt-decode";
+
+export const setSession = (token) => {
+    if (token) {
+      localStorage.setItem("token", token);
+    } else {
+      localStorage.removeItem("token");
+    }
+  };
+  
+  export const isValidToken = (token) => {
+    if (!token) return false;
+    const decodedToken = jwtDecode(token);
+    const currentTime = Date.now() / 1000;
+    return decodedToken.exp > currentTime;
+  };
+  

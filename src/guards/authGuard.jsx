@@ -5,20 +5,20 @@ import { useState } from "react";
 
 export default function AuthGuard({ children }) {
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
-
+console.log(isAuthenticated)
   const { pathname } = useLocation();
   const [requestedLocation, setRequestedLocation] = useState(null);
 
-  if(!isAuthenticated){
-    if (pathname !== requestedLocation){
-        setRequestedLocation(pathname)
+  if (isAuthenticated === false) {
+    if (pathname !== requestedLocation) {
+      setRequestedLocation(pathname);
     }
     if (pathname.includes("customer")) {
-        return <ClientLogin />;
-      }
-      if (pathname.includes("admin")) {
-        return <AdminLogin />;
-      }
+      return <ClientLogin />;
+    }
+    if (pathname.includes("admin")) {
+      return <AdminLogin />;
+    }
   }
 
   if (requestedLocation && pathname !== requestedLocation) {
