@@ -1,10 +1,10 @@
 export const Button = (props) => {
   return (
     <button
-      className={`rounded-3xl px-6 py-3 text-sm outline-none border-2 ${
+      className={`rounded-3xl px-6 py-3 text-sm outline-none border transition-all duration-150 ${
         props.type === "colored"
-          ? "bg-orange-500 text-white hover:bg-gradient-to-r from-orange-500 to-orange-700 border-orange-500 transition-all duration-150"
-          : "bg-transparent text-black  border-black h-fit w-fit"
+          ? "bg-orange-500 text-white hover:bg-gradient-to-r hover:border-orange-700 from-orange-500 to-orange-700 border-orange-500"
+          : "bg-transparent text-black  border-black h-fit w-fit hover:bg-black hover:text-white"
       } ${props.style}`}
     >
       {props.title}

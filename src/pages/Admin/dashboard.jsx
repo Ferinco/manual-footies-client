@@ -31,36 +31,38 @@ export default function AdminDashboard() {
     <Wrapper className="p-5">
       <div>
         <h3 className="font-semibold text-2xl">My Dashboard</h3>
-        <p>Welcome to your dashboard, here is an overview of your store data and customers.</p>
+        <p className="">Welcome to your dashboard, here is an overview of your store data and customers.</p>
       </div>
-      <div className="top-divs flex gap-5 mt-5 w-screen lg:w-full overflow-x-auto mt-[50px]">
+      <div className="top-divs flex gap-5 w-screen lg:w-full overflow-x-auto mt-[50px]">
         {topBars.map((bar, index) => (
           <div
-            className={`top-bar w-[270px] flex lg:w-1/4 border rounded-md p-3 justify-between cursor-pointer hover:scale-[1.01] duration-75 flex-shrink-0 xl:flex-shrink ${
-              activeBar === index ? "border-[orange]" : ""
+            className={`top-bar w-[270px] flex flex-col lg:w-1/4 border rounded-md p-3 justify-between cursor-pointer duration-75 flex-shrink-0 xl:flex-shrink text-white ${
+              index === 2 ? "bg-gradient-to-r from-cyan-300 to-cyan-500" : index === 1 ? "bg-gradient-to-l from-red-500 to-red-400" : index === 0 ? "bg-gradient-to-l from-green-500 to-green-400" : "bg-gradient-to-l from-neutral-700 to-slate-600"
             }`}
             key={index}
             onClick={() => setActiveBar(index)}
           >
-            <div className="border border-gray-100 p-3">
+            <div className="py-3">
               <Icon
                 icon={bar.icon}
                 width="2em"
                 height="2em"
-                className={activeBar === index ? "text-[orange]" : ""}
+                // className={activeBar === index ? "text-[orange]" : ""}
               />
             </div>
+            <div className="flex justify-between items-end">
             <div className="flex flex-col">
               <p className="font-medium">{bar.title}</p>
-              <h6 className="font-bold text-xl">{bar.data}</h6>
+              <h6 className="font-bold text-4xl">{bar.data}</h6>
             </div>
-            <div className="h-full flex justify-end items-end">
+            <div className="flex justify-end items-end border h-fit px-2 rounded-lg">
               <Icon
                 icon="radix-icons:arrow-top-right"
                 width="1.2em"
                 height="1.2em"
                 className="hover:rotate-45"
               />
+            </div>
             </div>
           </div>
         ))}

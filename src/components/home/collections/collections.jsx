@@ -30,10 +30,10 @@ export default function Collections() {
   return (
     <div className="mt-40 flex flex-col gap-10 overflow-hidden">
       <div className="flex flex-col md:flex-row justify-between">
-        <h4>COLLECTIONS</h4>
+        <h4 className="text-orange-500 font-medium">COLLECTIONS</h4>
         <SubHeader style="text-start" title="all unique collections" />
-        <p className="hidden lg:flex items-end">
-          jgfyur jur hiue ihieyug uygeu
+        <p className="hidden lg:flex items-end text-black font-medium">
+         The search is made easy!
         </p>
       </div>
       <div className="flex flex-col md:grid grid-cols-2 gap-4 overflow-x-auto">

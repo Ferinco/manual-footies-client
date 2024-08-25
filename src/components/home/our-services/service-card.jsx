@@ -43,11 +43,8 @@ export const LongCard = () => {
 };
 export const ShortCard = () => {
   return (
-    <div className="flex flex-col justify-between rounded-2xl w-full lg:w-1/3 relative overflow-hidden h-64 lg:h-fit">
-      <div className="object-center flex w-full h-full">
-        <img src="/images/day.jpg" className="h-full w-full object-cover" />
-      </div>
-      <div className="absolute bottom-0 flex justify-center text-center items-end bg-opacity-20 w-full h-full p-5">
+    <div className="flex flex-col justify-between rounded-2xl w-full lg:w-1/3 relative overflow-hidden h-64 lg:h-auto border bg-orange-100">
+      <div className="absolute bottom-0 flex justify-center text-center items-end bg-opacity-20 w-full h-full= p-5">
         <h2 className="text-3xl uppercase font-bold text-white ">
           #Item of the day
         </h2>

@@ -28,10 +28,10 @@ export default function NewArrival() {
   return (
     <div className="mt-40 flex flex-col gap-10 overflow-hidden">
       <div className="flex flex-col md:flex-row justify-between">
-        <h4>NEW ARRIVALS</h4>
-        <SubHeader style="text-start" title="Be the first to take the #news" />
-        <p className="hidden lg:flex items-end">
-          jgfyur jur hiue ihieyug uygeu
+        <h4 className="text-orange-500 font-medium">NEW ARRIVALS</h4>
+        <SubHeader style="text-start" title={<span className="capitalize">Be the first to take the <span className="text-orange-500">#news</span></span>} />
+        <p className="hidden lg:flex items-end font-medium text-black">
+          Our lastest products on here.
         </p>
       </div>
       <div className="flex lg:grid grid-cols-3 gap-4 overflow-x-auto mt-5">

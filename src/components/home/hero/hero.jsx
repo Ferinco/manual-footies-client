@@ -5,7 +5,7 @@ import RightSide from "./right";
 
 export default function HeroSection(){
     return(
-        <div className="flex flex-col md:flex-row h-[90vh] w-screen self-center justify-center md:mt-0 mt-16">
+        <div className="flex flex-col md:flex-row h-auto w-screen self-start justify-center">
           <LeftSide/>
           <RightSide/>
             {/* <MobileBanner/> */}

@@ -59,8 +59,8 @@ export default function Products() {
       <div className="flex flex-col lg:flex-row justify-between">
         <SubHeader style="text-start" title="We always Give the best." />
         <div className="sm:max-w-[300px]">
-          <p>
-            lhiueuife ugteuge huyeourgeuy egroueoref ggeufeyuey bghjge egeoregr
+          <p className="text-black/80 font-medium">
+Our <span className="text-black">"there's nothing we cannot make"</span> policy is always backed by our zeal for delivering the best.
           </p>
         </div>
       </div>
