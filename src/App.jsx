@@ -14,8 +14,7 @@ function App() {
     dispatch(initializeAuth());
   }, [dispatch]);
   const isInitialized = state.isInitialized
-  console.log(isInitialized);
-  console.log(localStorage.getItem("user"));
+
   return (
     <>
       <AppProvider>

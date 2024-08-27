@@ -9,6 +9,7 @@ const initialState = {
   role: null,
   status: "idle",
   error: null,
+  storedToken: ""
 };
 // Async thunk for initialization
 export const initializeAuth = createAsyncThunk(
@@ -20,12 +21,13 @@ export const initializeAuth = createAsyncThunk(
       if (token && isValidToken(token)) {
         const storedData = localStorage.getItem("user"); 
         const data = JSON.parse(storedData); 
-        console.log(data.user)
+        console.log(token)
 
         return {
           isAuthenticated: true,
           user: data.user,
           role: data.user.role,
+          storedToken: token
         };
       } else {
         return {
@@ -109,6 +111,7 @@ const userSlice = createSlice({
       state.role = action.payload.role;
       state.status = "succeeded";
       state.isInitialized = true
+      state.storedToken = action.payload.storedToken
     });
     builder.addCase(initializeAuth.rejected, (state, action) => {
       state.status = "failed";
