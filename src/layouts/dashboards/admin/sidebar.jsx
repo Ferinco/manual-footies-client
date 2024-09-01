@@ -18,7 +18,7 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="h-screen w-[250px] p-2 hidden lg:flex flex-col justify-between admin-sidebar bg-[#fafafa] fixed">
+    <div className="h-screen w-[250px] p-2 hidden lg:flex flex-col justify-between admin-sidebar bg-[#fafafa] fixed z-50">
       <div>
         <div className="flex p-1 h-16 rounded-xl border border-red-400"></div>
         <div className="sidebar-contents mt-5">

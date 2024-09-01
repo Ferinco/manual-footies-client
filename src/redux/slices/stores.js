@@ -3,6 +3,7 @@ import { ShopServices } from "../../services/shopServices";
 
 const initialState = {
   stores: [],
+  store: {},
   error: null,
   isLoading: true,
 };
@@ -37,13 +38,25 @@ export const createNewStore = createAsyncThunk(
     }
   }
 );
+export const filterStore = createAsyncThunk(
+  "stores/filterStore",
+  async ({ id }, { rejectWithValue }) => {
+    try {
+      const data = await ShopServices.getShops();
+      const filteredData = data.filter((datum)=> datum._id === id)
+      return (filteredData[0]);
+    }catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
 
 const storeSlice = createSlice({
   name: "stores",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchAllStores.pending, (state, action) => {
+    builder.addCase(fetchAllStores.pending, (state) => {
       state.isLoading = true;
     });
     builder.addCase(fetchAllStores.fulfilled, (state, action) => {
@@ -54,7 +67,7 @@ const storeSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     });
-    builder.addCase(createNewStore.pending, (state, action) => {
+    builder.addCase(createNewStore.pending, (state) => {
       state.isLoading = true;
     });
     builder.addCase(createNewStore.fulfilled, (state, action) => {
@@ -64,6 +77,17 @@ const storeSlice = createSlice({
     builder.addCase(createNewStore.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
+    });
+    builder.addCase(filterStore.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    });
+    builder.addCase(filterStore.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(filterStore.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.store = action.payload;
     });
   },
 });

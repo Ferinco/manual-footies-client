@@ -13,7 +13,9 @@ export const PATH_DASHBOARD ={
     },
     admin: {
         index: ROOT_ADMIN,
-       stores: JOIN(ROOT_ADMIN, "stores" )
+       stores: JOIN(ROOT_ADMIN, "stores" ),
+       particularStore: JOIN(ROOT_ADMIN, "stores/:storeId" ),
+       createStore: JOIN(ROOT_ADMIN, "stores/create-store" )
 
     }
 }

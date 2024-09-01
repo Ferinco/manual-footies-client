@@ -5,23 +5,22 @@ export const ShopServices = {
     const { data } = await mainApi.get(`/api/v1/shops`);
     return data;
   },
-  createShop: async ({ name, description, billboardImage }) => {
-  const token = localStorage.getItem("token");
-    const { data } = await mainApi.post(
-      "/api/v1/shops",
-      {
-        name,
-        description,
-        billboardImage,
-        
-      },
-      {
+
+  createShop: async ({name, description, billboardImage}) => {
+    const { data } = await mainApi.post("/api/v1/shops", {name, description, billboardImage}, {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-      }
-    );
+      
+    });
     return data;
   },
+
+  updateShop: async(values, id)=> {
+    const {data} = await mainApi.put(`/api/v1/shops/${id}`, values, {
+      headers: { "Content-Type": "application/json" },
+    })
+    return data
+  }
 };

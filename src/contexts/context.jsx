@@ -5,8 +5,9 @@ export function AppProvider({ children }) {
   const [chosenName, setChosenName] = useState("");
   const [pass, setPass] = useState("");
   const [activeBar, setActiveBar] = useState(1);
+  const [settingsTab, setSettingsTab] = useState(0);
   return (
-    <AppContext.Provider value={{ userEmail, setUserEmail, chosenName, setChosenName, pass, setPass, activeBar, setActiveBar }}>
+    <AppContext.Provider value={{ userEmail, setUserEmail, chosenName, setChosenName, pass, setPass, activeBar, setActiveBar, settingsTab, setSettingsTab }}>
       {children}
     </AppContext.Provider>
   );

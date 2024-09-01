@@ -9,6 +9,8 @@ import {
   AdminLogin,
   AdminStores,
   ClientLogin,
+  CreateStore,
+  ParticularStore,
   SignUp,
 } from "../exports";
 import RoleBasedGuard from "../guards/roleBasedGuard";
@@ -54,6 +56,8 @@ export default function Routes() {
       children: [
         { path: "", element: <AdminDashboard /> },
         { path: "stores", element: <AdminStores /> },
+        { path: "stores/:storeId", element: <ParticularStore /> },
+        { path: "stores/create-store", element: <CreateStore /> },
       ],
     },
   ]);
