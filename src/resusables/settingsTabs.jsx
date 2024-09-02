@@ -6,14 +6,14 @@ export const ShopSettingTabs = [
         clickable: true,
     },
     {
-        title: "Edit Product",
+        title: "Post Product",
         id: 1,
         clickable: true,
     },
-    {
-        title: "Post Product",
-        id: 2,
-        clickable: true,
-    },
+    // {
+    //     title: "Post Product",
+    //     id: 2,
+    //     clickable: true,
+    // },
     
 ]

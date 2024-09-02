@@ -2,7 +2,6 @@ import { useState } from "react";
 import axios from "axios";
 import { cloudName, uploadPreset, mainApi } from "../../utils/api/axios";
 import { ShopServices } from "../../services/shopServices";
-import { Input } from "postcss";
 import { FormInput } from "../../components/custom/inputs";
 import toast from "react-hot-toast";
 import { Navigate, useNavigate } from "react-router-dom";

@@ -8,7 +8,7 @@ export default function AdminDashboardLayout() {
       <Sidebar />
       <div className="w-full lg:w-[calc(100vw-250px)] flex flex-col h-screen lg:ml-[250px]">
         <DashboardNavbar />
-        <div className="mt-16 bg-[#f1f1f1] h-full">
+        <div className="mt-16">
         <Outlet />
         </div>
       </div>

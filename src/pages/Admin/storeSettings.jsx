@@ -14,16 +14,13 @@ export default function StoreSettings(props) {
   const showTab = () => {
     switch (settingsTab) {
       case 0:
-        return <BannerSlide />;
+        return <BannerSlide setStore={store}/>;
         break;
       case 1:
-        return <EditSlide />;
-        break;
-      case 2:
-        return <PostSlide />;
+        return <PostSlide setStore={store}/>;
         break;
       default:
-        return <BannerSlide />;
+        return <BannerSlide setStore={store}/>;
     }
   };
   return (
@@ -53,7 +50,7 @@ export default function StoreSettings(props) {
               className={`text-sm ${
                 settingsTab === tab.id
                   ? "border-b border-orange-500 text-orange-500 font-semibold"
-                  : "font-medium"
+                  : "font-semibold border-b border-transparent"
               }`}
             >
               {tab.title}

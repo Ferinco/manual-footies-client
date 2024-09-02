@@ -14,7 +14,6 @@ export default function Stores() {
   const token = localStorage.getItem("user");
   console.log(token);
   console.log(stores);
-
   useEffect(() => {
     FetchShopsData();
   }, []);
@@ -28,34 +27,41 @@ export default function Stores() {
     billboardImage:
       "https://res.cloudinary.com/dyunxdvmy/image/upload/v1724668344/manual-footies/143261_ylefhg.jpg",
   };
-  
 
-  
   return (
     <div className="px-5 w-full overflow-x-hidden">
-  <div className="p-5 fixed flex justify-between items-center w-full lg:w-[calc(100vw-250px)] right-0 self-center justify-self-center bg-[#f1f1f1] bg-opacity-100">
-    <div>
-    <h3 className="font-semibold text-2xl">Stores</h3>
-    <p>Control your stores here.</p>
-    </div>
-    <Link className="p-3 h-fit rounded-md bg-green-600 text-white text-sm" to={PATH_DASHBOARD.admin.createStore}>Create New Store</Link>
-  </div>
-  <div className="store-body overflow-x-visible w-full flex flex-col gap-12 mt-32">
-    {stores.map((store) => (
-      <div className="store-row flex flex-col gap-2" key={store.name}>
-        <div className="flex justify-between">
-          <h6>{store.name}</h6>
-          <Link className="text-sm" to={`/admin/stores/${store._id}`}>view all</Link>
+      <div className="p-5 fixed flex justify-between items-center w-full lg:w-[calc(100vw-250px)] right-0 self-center justify-self-center bg-white bg-opacity-100">
+        <div>
+          <h3 className="font-semibold text-2xl">Stores</h3>
+          <p>Control your stores here.</p>
         </div>
-        <div className="products flex gap-3 w-full overflow-x-auto">
-          {[...Array(6)].map((_, index) => (
-            <div className="product min-w-[200px] h-[200px] border border-red-500" key={index}></div>
-          ))}
-        </div>
+        <Link
+          className="p-3 h-fit rounded-md bg-green-600 text-white text-sm"
+          to={PATH_DASHBOARD.admin.createStore}
+        >
+          Create New Store
+        </Link>
       </div>
-    ))}
-  </div>
-</div>
-
+      <div className="store-body overflow-x-visible w-full flex flex-col gap-12 mt-32">
+        {stores.map((store) => (
+          <div className="store-row flex flex-col gap-2" key={store.name}>
+            <div className="flex justify-between">
+              <h6>{store.name}</h6>
+              <Link className="text-sm" to={`/admin/stores/${store._id}`}>
+                view all
+              </Link>
+            </div>
+            <div className="products flex gap-3 w-full overflow-x-auto">
+              {[...Array(6)].map((_, index) => (
+                <div
+                  className="product min-w-[200px] h-[200px] border border-red-500"
+                  key={index}
+                ></div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }

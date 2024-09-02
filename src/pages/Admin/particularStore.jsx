@@ -1,17 +1,24 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { fetchAllStores, filterStore } from "../../redux/slices/stores";
 import { UseAppContext } from "../../contexts/context";
 import StoreSettings from "./storeSettings";
+import DashboardPreloader from "../../components/custom/preloaders/dashboardPreloader";
+import { DeleteStoreModal } from "../../components/custom/deleteModal";
+import { ShopServices } from "../../services/shopServices";
+import { mainApi } from "../../utils/api/axios";
 
 export default function ParticularStore() {
   const { storeId } = useParams();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.stores);
   const store = state.store;
-  const [ settingsTab, setSettingsTab ] = useState(false);
-  console.log(store);
+  const [settingsTab, setSettingsTab] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const { activeBar, setActiveBar } = UseAppContext();
+  const navigate = useNavigate();
+  console.log(storeId);
 
   useEffect(() => {
     FetchShopsData();
@@ -23,10 +30,26 @@ export default function ParticularStore() {
     await dispatch(filterStore({ id: storeId }));
   };
 
+  //to delete shop
+  const DeleteShop = async (storeId) => {
+    try {
+      const { data } = await mainApi.delete(`/api/v1/shops/${storeId}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      console.log(data);
+      navigate("/admin/stores");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       {state.isLoading ? (
-        <div>Loading...</div>
+        <DashboardPreloader />
       ) : (
         <>
           <div className="px-5 w-full">
@@ -48,27 +71,55 @@ export default function ParticularStore() {
                   Featured products ({store?.products?.length})
                 </h6>
                 <div className="flex gap-2">
+                  {store?.products?.length === 0 ? (
+                    ""
+                  ) : (
+                    <Link className="border border-black px-3 rounded-lg">
+                      Upload Products
+                    </Link>
+                  )}
                   <div className="border border-black px-3 rounded-lg">
-                    <Link to="">upload products</Link>
-                  </div>
-                  <div className="border border-black px-3 rounded-lg">
-                    <Link to="" onClick={() => setSettingsTab(true)}>
-                      settings
+                    <Link
+                      to=""
+                      onClick={() => (setSettingsTab(true), setActiveBar(1))}
+                    >
+                      Edit Store
                     </Link>
                   </div>
+                  <Link
+                    className="border border-red-500 px-3 rounded-lg text-red-500"
+                    onClick={() => setOpenModal(true)}
+                  >
+                    Delete
+                  </Link>
                 </div>
               </div>
-              <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-5">
-                {[...Array(20)].map((_, index) => (
-                  <div
-                    key={index}
-                    className="w-[200px] h-[200px] border border-orange-500"
-                  ></div>
-                ))}
-              </div>
+              {store?.products?.length === 0 ? (
+                <div className="flex flex-col gap-2 justify-center w-full items-center my-10">
+                  <p className="text-xl">You have no products in this store</p>
+                  <Link className="border border-black p-3 font-semibold rounded-lg" 
+                  onClick={()=> (setSettingsTab(true), setActiveBar(2))}>
+                    Upload Products
+                  </Link>
+                </div>
+              ) : (
+                <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-5">
+                  {[...Array(20)].map((_, index) => (
+                    <div
+                      key={index}
+                      className="w-[200px] h-[200px] border border-orange-500"
+                    ></div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
-          <StoreSettings store={store} settingsTab={settingsTab}/>
+          <StoreSettings store={store} settingsTab={settingsTab} />
+          <DeleteStoreModal
+            hide={openModal}
+            No={() => setOpenModal(false)}
+            Yes={() => DeleteShop(storeId)}
+          />
         </>
       )}
     </>
